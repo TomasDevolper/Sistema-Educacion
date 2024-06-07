@@ -16,7 +16,7 @@ const insertarAlumno = (alumno) => __awaiter(void 0, void 0, void 0, function* (
     yield prisma.alumnos.create({
         data: {
             codigo: alumno.codigo,
-            documento_identidad: alumno.documentoIdentidad,
+            documento_Identidad: alumno.documentoIdentidad,
             nombres: alumno.nombres,
             apellido_paterno: alumno.apellidoPaterno,
             apellido_materno: alumno.apellidoMaterno,
@@ -37,7 +37,7 @@ const obtenerAlumno = (idAlumno) => __awaiter(void 0, void 0, void 0, function* 
     console.log('alumnoService::obtenerAlumno', idAlumno);
     return yield prisma.alumnos.findUnique({
         where: {
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
 });
@@ -47,7 +47,7 @@ const modificarAlumno = (idAlumno, alumno) => __awaiter(void 0, void 0, void 0, 
     yield prisma.alumnos.update({
         data: {
             codigo: alumno.codigo,
-            documento_identidad: alumno.documentoIdentidad,
+            documento_Identidad: alumno.documentoIdentidad,
             nombres: alumno.nombres,
             apellido_paterno: alumno.apellidoPaterno,
             apellido_materno: alumno.apellidoMaterno,
@@ -57,7 +57,7 @@ const modificarAlumno = (idAlumno, alumno) => __awaiter(void 0, void 0, void 0, 
             direccion: alumno.direccion
         },
         where: {
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
     return { respuesta: 'OK' };
@@ -67,7 +67,7 @@ const eliminarAlumno = (idAlumno) => __awaiter(void 0, void 0, void 0, function*
     console.log('alumnoService::eliminarAlumno', idAlumno);
     yield prisma.alumnos.delete({
         where: {
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
     return { respuesta: 'OK' };

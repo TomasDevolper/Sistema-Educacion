@@ -1,11 +1,12 @@
 import { Request, Response } from "express"
 import * as alumnoService from "../services/alumnoService";
+import { ResponseModel } from "../models/ResponseModel";
 
 export const insertarAlumno = async (req: Request, res: Response) => {
     console.log('alumnoController::insertarAlumno');
     try {
         const response = await alumnoService.insertarAlumno(req.body);
-        res.status(200).json(response);
+        res.status(200).json(ResponseModel.success(response));
     } catch (error) {
         res.status(500).json({error: error})
     }
@@ -15,9 +16,10 @@ export const listarAlumnos = async (req: Request, res: Response) => {
     console.log('alumnoController::listarAlumnos');
     try {
         const alumnos = await alumnoService.listarAlumnos();
-        res.status(200).json(alumnos);
+        res.status(200).json(ResponseModel.success(alumnos));
     } catch (error) {
         res.status(500).json({error: error})
+        console.error(error)
     }
     
 }

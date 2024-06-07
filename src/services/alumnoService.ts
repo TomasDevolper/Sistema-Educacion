@@ -5,9 +5,9 @@ const prisma = new PrismaClient();
 
 export const insertarAlumno = async (alumno: IAlumno) => {
     await prisma.alumnos.create({
-        data: {
+        data:{
             codigo: alumno.codigo,
-            documento_identidad: alumno.documentoIdentidad,
+            documento_Identidad: alumno.documentoIdentidad,
             nombres: alumno.nombres,
             apellido_paterno: alumno.apellidoPaterno,
             apellido_materno: alumno.apellidoMaterno,
@@ -28,7 +28,7 @@ export const obtenerAlumno = async (idAlumno: number) => {
     console.log('alumnoService::obtenerAlumno',idAlumno);
     return await prisma.alumnos.findUnique({
         where: {
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
 }
@@ -39,7 +39,7 @@ export const modificarAlumno = async (idAlumno: number, alumno:IAlumno) => {
     await prisma.alumnos.update({
         data: {
             codigo: alumno.codigo,
-            documento_identidad: alumno.documentoIdentidad,
+            documento_Identidad: alumno.documentoIdentidad,
             nombres: alumno.nombres,
             apellido_paterno: alumno.apellidoPaterno,
             apellido_materno: alumno.apellidoMaterno,
@@ -49,7 +49,7 @@ export const modificarAlumno = async (idAlumno: number, alumno:IAlumno) => {
             direccion: alumno.direccion
         },
         where:{
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
 
@@ -61,7 +61,7 @@ export const eliminarAlumno = async (idAlumno: number) => {
     console.log('alumnoService::eliminarAlumno',idAlumno);
     await prisma.alumnos.delete({
         where: {
-            id_alumno: idAlumno
+            Id_alumno: idAlumno
         }
     });
     return {respuesta:'OK'};
